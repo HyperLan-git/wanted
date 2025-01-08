@@ -78,6 +78,7 @@ function updateGame(canvas) {
     let thisFrameTime = thisFrame - lastFrame;
     frameTime += (thisFrameTime - frameTime);
     lastFrame = thisFrame;
+    if(thisFrameTime > .2) thisFrameTime = .2;
 
     updateCharacters(characters["find"], thisFrameTime, canvas);
     updateCharacters(characters["c1"], thisFrameTime, canvas);
