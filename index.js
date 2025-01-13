@@ -5,6 +5,10 @@ img2.src = "Uncanny.webp";
 let img3 = new Image(50, 50);
 img3.src = "Uncanny2.webp";
 
+let correct = new Audio('correct.mp3');
+
+let wrong = new Audio('wrong.mp3');
+
 let sz = 50;
 let ch = 150;
 let velocity = 10/60;
@@ -30,6 +34,10 @@ function createCharacter(sz, pos, vel, char) {
     };
 }
 
+function getFile(selectorID) {
+    return document.getElementById(selectorID).files[0];
+}
+
 const characters = {
     "find": [],
     "c1": [],
@@ -45,7 +53,31 @@ function reload() {
     characters.c1 = [];
     characters.c2 = [];
     drawChars = [];
+
+    let c1 = getFile("file1");
+    let c2 = getFile("file2");
+    let c3 = getFile("file3");
+    if(c1 !== undefined) img1.src = URL.createObjectURL(c1);
+    if(c2 !== undefined) img2.src = URL.createObjectURL(c2);
+    if(c3 !== undefined) {
+        img3.src = URL.createObjectURL(c3);
+        document.getElementById("wimg").src = img3.src;
+    }
+
     let a = document.getElementById("wanted");
+    a.width = document.getElementById("w").value;
+    a.height = document.getElementById("h").value;
+    a.onmousedown = a.ontouchstart = (e) => {
+        let x = characters["find"][0].pos.x;
+        let y = characters["find"][0].pos.y;
+        console.log(e.offsetX - x);
+        console.log(e.offsetY - y);
+        if (e.offsetX <= x + sz && e.offsetX >= x &&
+                e.offsetY <= y + sz && e.offsetY >= y)
+            correct.play();
+        else
+            wrong.play();
+    };
 
     function newChar(char) {
         const angle = Math.random() * Math.PI * 2;
@@ -98,9 +130,5 @@ function drawCanvas(canvas, g) {
 }
 
 window.onload = () => {
-    console.log("loaded !");
-
     reload();
 };
-
-console.log("script loaded !");

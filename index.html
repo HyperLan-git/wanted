@@ -5,12 +5,17 @@
     <link rel="icon" type="image/x-icon" href="Canny.webp">
     <script src="index.js"></script>
 </head>
-<body>
+<body style="background: black; color:white;">
     Number of each type of character : <input type="number" value="150" id="n"></input><br>
     Size of the characters : <input type="number" value="50" id="sz"></input><br>
-    Speed of the characters (px/s) : <input type="number" value="10" id="vel"></input><br>
+    Speed of the characters : <input type="number" value="10" id="vel"></input><br>
+    Width : <input type="number" value="1200" id="w"></input><br>
+    Height : <input type="number" value="700" id="h"></input><br>
+    <input type="file" onchange="reload();" id="file1">Image for character 1</input><br>
+    <input type="file" onchange="reload();" id="file2">Image for character 2</input><br>
+    <input type="file" onchange="reload();" id="file3">Wanted character</input><br>
     <button onclick="reload()">RESET</button><br><br>
-    FIND : <img src="Uncanny2.webp" width="50" height="50" alt="The character you have to find"></img><br>
+    FIND (Click on) : <img src="Uncanny2.webp" width="50" height="50" alt="The character you have to find" id="wimg"></img><br>
     <canvas width="1200" height="700" style="background-color: black;" id="wanted"></canvas>
 </body>
 </html>
