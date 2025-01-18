@@ -14,7 +14,9 @@
     <input type="file" onchange="reload();" id="file1">Image for character 1</input><br>
     <input type="file" onchange="reload();" id="file2">Image for character 2</input><br>
     <input type="file" onchange="reload();" id="file3">Wanted character</input><br>
-    <button onclick="reload()">RESET</button><br><br>
+    <button onclick="reload()">RESET</button><br>
+    <img src="correct.png" height="50px" id="correct" alt="Green tick, correct" style="opacity: 0;">
+    <img src="wrong.png" height="50px" id="wrong" alt="Wrong, red cross" style="opacity: 0;"><br>
     FIND (Click on) : <img src="Uncanny2.webp" width="50" height="50" alt="The character you have to find" id="wimg"></img><br>
     <canvas width="1200" height="700" style="background-color: black;" id="wanted"></canvas>
 </body>

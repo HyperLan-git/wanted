@@ -73,10 +73,19 @@ function reload() {
         console.log(e.offsetX - x);
         console.log(e.offsetY - y);
         if (e.offsetX <= x + sz && e.offsetX >= x &&
-                e.offsetY <= y + sz && e.offsetY >= y)
+                e.offsetY <= y + sz && e.offsetY >= y) {
             correct.play();
-        else
+            document.getElementById("correct").style = "opacity: 1;";
+            setTimeout(() => {
+                document.getElementById("correct").style = "opacity: 0;";
+            }, 1500);
+        } else {
             wrong.play();
+            document.getElementById("wrong").style = "opacity: 1;";
+            setTimeout(() => {
+                document.getElementById("wrong").style = "opacity: 0;";
+            }, 1500);
+        }
     };
 
     function newChar(char) {
